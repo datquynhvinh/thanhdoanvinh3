@@ -1,6 +1,7 @@
 <?php
-    include_once('../db/connect.php');
-    include_once('../../app/helpers/lib.php');
+    require_once '../../app/config/config.php';
+    include_once APPROOT . '/helpers/lib.php';
+    include_once APPROOT . '/db/connect.php';
 
     if (!isLoggedIn()) {
         redirect('admin/auth/login.php');

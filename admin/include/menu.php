@@ -34,5 +34,18 @@
                 </li>
             </ul>
         <?php } ?>
+        <?php if (isMember()) { ?>
+            <ul class="accordion-menu">
+                <li class="sidebar-title">
+                    Chức năng
+                </li>
+                <li>
+                    <a href="<?php echo URLROOT; ?>/admin/dashboard"><i class="fas fa-grip-horizontal"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="<?php echo URLROOT; ?>/admin/nguoi-dung/"><i class="fas fa-solid fa-user"></i>Quản lý người dùng</a>
+                </li>
+            </ul>
+        <?php } ?>
     </div>
 </div>

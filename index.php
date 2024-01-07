@@ -1,7 +1,7 @@
 <?php
     require_once 'app/config/config.php';
     session_start();
-    include_once('db/connect.php');
+    include_once('app/db/connect.php');
 
     $tinNoiBatSql = 'SELECT news.id, news.image, news.title, news.url, categories.cate_name, categories.cate_url
                  FROM news

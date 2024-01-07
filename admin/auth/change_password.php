@@ -1,7 +1,7 @@
 <?php
     require_once '../../app/config/config.php';
-    require_once '../../app/helpers/lib.php';
-    include_once '../db/connect.php';
+    include_once APPROOT . '/helpers/lib.php';
+    include_once APPROOT . '/db/connect.php';
 
     // Import UI
     include_once '../include/auth_ui.php';

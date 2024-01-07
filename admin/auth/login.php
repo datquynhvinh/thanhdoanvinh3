@@ -1,7 +1,7 @@
 <?php
     require_once '../../app/config/config.php';
-    require_once '../../app/helpers/lib.php';
-    include_once '../db/connect.php';
+    include_once APPROOT . '/helpers/lib.php';
+    include_once APPROOT . '/db/connect.php';
 
     // Import UI
     include_once '../include/auth_ui.php';
@@ -40,6 +40,8 @@
         // Lấy thông tin đăng nhập từ người dùng
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $data['email'] = $email;
+        $data['password'] = $password;
 
         if (empty($email)) {
             $data["email_err"] = "Hãy nhập địa chỉ email!";

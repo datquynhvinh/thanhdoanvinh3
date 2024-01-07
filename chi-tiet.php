@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include_once('db/connect.php');
+	include_once('app/db/connect.php');
 	
 	$user_query = "SELECT * FROM users WHERE id = '1'";
     $user_result = mysqli_query($connection, $user_query);

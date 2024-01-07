@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include_once('db/connect.php');
+	include_once('app/db/connect.php');
 	include('include/menu.php');
  ?>
 <div class="section_header">

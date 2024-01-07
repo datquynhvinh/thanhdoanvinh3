@@ -1,7 +1,7 @@
 <?php
     require_once '../../app/config/config.php';
-    include_once '../../app/helpers/lib.php';
-    include_once '../db/connect.php';
+    include_once APPROOT . '/helpers/lib.php';
+    include_once APPROOT . '/db/connect.php';
 
     $sql_category = mysqli_query($con,'SELECT * FROM menu ORDER BY idMenu DESC');
     $sql_category_top = mysqli_query($con,'SELECT * FROM `menu-top` ORDER BY idMenuTop ASC');

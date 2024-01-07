@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","izfaqdfz_webdoan2","tJsh_!Ur92P[","izfaqdfz_webdoan2");
+$con = mysqli_connect("localhost","root","","thanhdoanvinh2");
 
 // Check connection
 if (mysqli_connect_errno())
