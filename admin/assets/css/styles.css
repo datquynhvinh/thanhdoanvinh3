@@ -1,0 +1,40 @@
+.admin_table_img {
+	width: 110px;
+	height: 70px;
+}
+
+.admin_new_title,
+.admin_new_content {
+	max-width: 446px;
+}
+
+.admin_icon_delete {
+	color: red;
+	margin: 0 10px;
+	border: none;
+	background-color: transparent;
+}
+
+.admin_icon_edit {
+	color: blue;
+	margin: 0 10px;
+}
+
+.admin_icon_detail {
+	color: green;
+	margin: 0 10px;
+}
+
+
+.btn i{
+	font-size: 10px;
+}
+
+.content-wrapper {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.item {
+	margin: 10px 0;
+}

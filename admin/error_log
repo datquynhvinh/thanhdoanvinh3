@@ -1,0 +1,110 @@
+[16-May-2023 19:56:25 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isAdmin() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php:3
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(47): include()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php on line 3
+[16-May-2023 19:56:28 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isAdmin() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php:3
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(47): include()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php on line 3
+[16-May-2023 19:56:31 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isAdmin() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php:3
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(47): include()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php on line 3
+[16-May-2023 19:56:43 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 19:56:50 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isAdmin() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php:3
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(47): include()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php on line 3
+[16-May-2023 19:59:38 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isAdmin() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php:3
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(47): include()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php on line 3
+[16-May-2023 19:59:40 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isAdmin() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php:3
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(47): include()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/menu.php on line 3
+[16-May-2023 20:04:41 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:11:17 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:11:19 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:11:19 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:58:30 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:58:32 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:58:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:58:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:58:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:58:34 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:59:05 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:59:06 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:59:06 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 20:59:07 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
+[16-May-2023 21:00:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught Error: Call to undefined function isLoggedIn() in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php:5
+Stack trace:
+#0 /home/izfaqdfz/doan.congnghephanmem.online/admin/index.php(3): include_once()
+#1 {main}
+  thrown in /home/izfaqdfz/doan.congnghephanmem.online/admin/include/top.php on line 5
