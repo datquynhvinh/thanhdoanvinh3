@@ -1,6 +1,10 @@
 <?php
 	require_once '../../app/config/config.php';
     include_once('../include/top.php');
+
+    if (!isAdmin()) {
+        redirect('admin/menu');
+    }
 ?>
 <?php
     if(isset($_POST['delete'])) {
