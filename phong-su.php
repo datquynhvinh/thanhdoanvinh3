@@ -2,6 +2,7 @@
 	session_start();
     require_once 'app/config/config.php';
 	include_once('app/db/connect.php');
+    include('include/menu.php');
  ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +30,6 @@
 <div class="section_header">
     <div class="header_pc">
         <?php
-	        include('include/menu.php');
 	        include('include/phongsu.php');
 	   ?>
     </div>

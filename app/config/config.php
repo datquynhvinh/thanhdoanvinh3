@@ -4,7 +4,7 @@
 define('APPROOT', dirname(dirname(__FILE__)));
 //URL Root
 // Nhớ xóa ký tự / ở cuối
-define('URLROOT', 'http://localhost/thanhdoanvinh3/');
+define('URLROOT', 'http://localhost/thanhdoanvinh3');
 // define('URLROOT', 'https://doan.congnghephanmem.online');
 //Site Name
 define('SITENAME', 'Đoàn Thanh Niên Thành Phố Vinh');

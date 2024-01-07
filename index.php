@@ -393,7 +393,7 @@
                         </div>
 
                         <div class="choose_seemore">
-                            <a href="/van-ban-doan-hoi-dang.php" class="btn btn_seeall">Xem tất cả</a>
+                            <a href= <?php echo URLROOT . "/van-ban-doan-hoi-dang.php" ?> class="btn btn_seeall">Xem tất cả</a>
                         </div>
                     </div>
 
