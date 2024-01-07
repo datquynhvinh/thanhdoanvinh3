@@ -1,5 +1,6 @@
 <?php
 	session_start();
+    require_once 'app/config/config.php';
 	include_once('app/db/connect.php');
 	
 	$user_query = "SELECT * FROM users WHERE id = '1'";

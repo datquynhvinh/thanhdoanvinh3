@@ -464,13 +464,6 @@
         </div>
     </div>
 </div>
-
-<div class="img_fixed_homepage_1">
-    <img src="./assets/img/ixed1.png" alt="">
-</div>
-<div class="img_fixed_homepage_2">
-    <img src="./assets/img/ixed1.png" alt="">
-</div>
 </body>
 <?php include('include/footer.php') ?>
 </html>

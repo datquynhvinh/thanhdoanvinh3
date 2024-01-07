@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="element_content_box element_content_box_color">
                     <ul class="element_breadcrumb">
-                        <li><a href="https://congnghephanmem.online/"><img src="./assets/img/homapgebreadcumb.png" alt="home"></a></li>
+                        <li><a href= <?php echo URLROOT ?>><img src="./assets/img/homapgebreadcumb.png" alt="home"></a></li>
                         <li><a href="<?php "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">Lịch công tác</a></li>
                     </ul>
                     <div class="element_news_large wow fadeInUp" data-wow-delay="200ms">

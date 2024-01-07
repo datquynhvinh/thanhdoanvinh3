@@ -2,8 +2,7 @@
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $perPage = 10;
     $offset = ($page - 1) * $perPage;
-    
-    $sql_news = "SELECT * FROM news WHERE category_id = $category_id ORDER BY id DESC LIMIT $offset, $perPage";
+    $sql_news = "SELECT * FROM news ORDER BY id DESC LIMIT $offset, $perPage";
     $slug = $_GET['slug'];
     
     $sql_category = "SELECT * FROM categories WHERE cate_url = '$slug'";
