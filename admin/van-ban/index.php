@@ -38,7 +38,7 @@
                                                 <th>Số/Ký hiệu</th>
                                                 <th>Ngày cập nhật</th>
                                                 <th>Trích yếu</th>
-                                                <th>Liên kết tải xuống</th>
+                                                <th>Tên file</th>
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
@@ -52,7 +52,7 @@
                                                 <td class="admin_new_title"><?php echo $row['kyhieu'] ?></td>
                                                 <td class="admin_new_content"><?php echo $row['ngaycapnhat'] ?></td>
                                                 <td class="admin_new_content"><?php echo $row['trichyeu'] ?></td>
-                                                <td class="admin_new_content"><?php echo $row['taixuong'] ?></td>
+                                                <td class="admin_new_content"><?php echo $row['tenfile'] ?></td>
                                                 <td>
                                                     <a class="admin_icon_edit" href="edit.php?id=<?php echo $row['idvanban'] ?>"><i class="fas fa-pen"></i></a>
                                                     <button type="button" class="admin_icon_delete" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="delete_id = <?php echo $row['id'] ?>"><i class="fas fa-trash"></i></button>

@@ -196,6 +196,14 @@
     .user-greeting:hover .change-password {
         display: block;
     }
+    .upload-word {
+		background-color: cadetblue;
+		border: none;
+	}
+	.upload-word:hover {
+		background-color: cadetblue;
+		border: none;
+	}
 </style>
 <body>
     <div class="section_header">

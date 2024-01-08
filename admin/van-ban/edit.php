@@ -11,9 +11,24 @@
 		$kyhieu = $_POST['kyhieu'];
 		$ngaycapnhat = $_POST['ngaycapnhat'];
 		$trichyeu = $_POST['trichyeu'];
-		$taixuong = $_POST['taixuong'];
-		
-		$sql_update = "update `vanban` set kyhieu ='$kyhieu', ngaycapnhat = '$ngaycapnhat', trichyeu = '$trichyeu', taixuong = '$taixuong' where idvanban = $id";
+
+		$value = "kyhieu ='$kyhieu', ngaycapnhat = '$ngaycapnhat', trichyeu = '$trichyeu'";
+
+		if (isset($_FILES['vanban']['size']) && $_FILES['vanban']['size'] > 0) {
+			$targetDir = '../../assets/vanban/upload/';
+			if (!is_dir($targetDir)) {
+				mkdir($targetDir, 0777, true);
+			}
+			$fileName = $_FILES["vanban"]["name"];
+			$ext = pathinfo(basename($fileName), PATHINFO_EXTENSION);
+			$fileUpload = time() . '.' . $ext;
+			$targetFile = $targetDir . $fileUpload;
+			move_uploaded_file($_FILES["vanban"]["tmp_name"], $targetFile);
+
+			$value .= ", taixuong = '$fileUpload', tenfile='$fileName'";
+		}
+
+		$sql_update = "update `vanban` set $value  where idvanban = $id";
 		$qr = mysqli_query($con, $sql_update);
 
 		if ($qr) {
@@ -31,8 +46,8 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-									<h2 class"p-3">Chỉnh sửa thông tin văn bản</h2>
-									<form class="row needs-validation" novalidate method="POST" action="" enctype="multipart/form-data"><div class="col-md-12">
+									<h2 class="p-3">Chỉnh sửa thông tin văn bản</h2>
+									<form class="row needs-validation" method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm(event)"><div class="col-md-12">
 											<div class="item">
 												<label for="validationCustom01" class="form-label">Trích yếu</label>
 												<input value="<?php echo $row['trichyeu'] ?>" type="text" class="form-control" name="trichyeu" required>
@@ -64,11 +79,12 @@
 										
 										<div class="col-md-6">
 											<div class="item">
-												<label for="validationCustom01" class="form-label">Liên kết tải xuống</label>
-												<input value="<?php echo $row['taixuong'] ?>" type="text" class="form-control" name="taixuong" required>
-												<div class="invalid-feedback">
-													Không được để trống phần này
+												<label for="validationCustom01" class="form-label">Chọn file:</label>
+												<input type="file" name="vanban" id="file" class="form-control" onchange="updateFileName()" accept=".doc, .docx, .pdf">
+												<div class="form-group">
+													<input id="uploadButton" class="custom-upload-button upload-word" name="uploadButton" value="<?php echo $row['tenfile'] ?? "Tải lên" ?>" onclick="document.getElementById('file').click()">
 												</div>
+												<span style="color: red;" id="errorMessage"></span>
 											</div>
 										</div>
 										<div class="col-12">
@@ -104,6 +120,37 @@
 		    }, false)
 		  })
 		})()
+
+		function validateForm() {
+			var fileInput = document.getElementById('file');
+			var errorMessage = document.getElementById('errorMessage');
+
+			if (fileInput.files.length !== 0) {
+				var allowedExtensions = ['.doc', '.docx', '.pdf'];
+				var fileExtension = fileInput.files[0].name.split('.').pop().toLowerCase();
+
+				if (allowedExtensions.indexOf('.' + fileExtension) === -1) {
+					errorMessage.textContent = 'Chỉ được tải lên các file Word (.doc, .docx) hoặc PDF (.pdf).';
+					return false;
+				}
+			}
+
+			// Nếu các điều kiện đều đúng, cho phép form submit
+			errorMessage.textContent = ''; // Xóa thông báo lỗi nếu có
+			return true;
+		}
+
+
+		function updateFileName() {
+			var fileInput = document.getElementById('file');
+			var buttonUpload = document.getElementById('uploadButton');
+
+			if (fileInput.files.length > 0) {
+				buttonUpload.value = fileInput.files[0].name;
+			} else {
+				buttonUpload.value = 'Tải lên';
+			}
+		}
 		
 	</script>
  

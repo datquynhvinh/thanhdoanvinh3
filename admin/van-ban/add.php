@@ -6,10 +6,23 @@
 		$kyhieu = $_POST['kyhieu'];
 		$ngaycapnhat = $_POST['ngaycapnhat'];
 		$trichyeu = $_POST['trichyeu'];
-		$taixuong = $_POST['taixuong'];
 		
-		$sql = "insert into `vanban`(kyhieu, ngaycapnhat, trichyeu, taixuong) 
-			values('$kihieu', '$ngaycapnhat', '$trichyeu', '$taixuong')";
+		$fileName = null;
+		$fileUpload = null;
+		if (isset($_FILES["vanban"])) {
+			$targetDir = '../../assets/vanban/upload/';
+			if (!is_dir($targetDir)) {
+				mkdir($targetDir, 0777, true);
+			}
+			$fileName = $_FILES["vanban"]["name"];
+			$ext = pathinfo(basename($fileName), PATHINFO_EXTENSION);
+			$fileUpload = time() . '.' . $ext;
+			$targetFile = $targetDir . $fileUpload;
+			move_uploaded_file($_FILES["vanban"]["tmp_name"], $targetFile);
+		}
+
+		$sql = "insert into `vanban`(kyhieu, ngaycapnhat, trichyeu, taixuong, tenfile) 
+			values('$kyhieu', '$ngaycapnhat', '$trichyeu', '$fileUpload', '$fileName')";
 		$qr = mysqli_query($con, $sql);
 
 		if ($qr) {
@@ -61,11 +74,12 @@
 										
 										<div class="col-md-6">
 											<div class="item">
-												<label for="validationCustom01" class="form-label">Liên kết tải xuống</label>
-												<input type="text" class="form-control" name="taixuong" required>
-												<div class="invalid-feedback">
-													Không được để trống phần này
+												<label for="validationCustom01" class="form-label">Chọn file:</label>
+												<input type="file" name="vanban" id="file" class="form-control" required onchange="updateFileName()" accept=".doc, .docx, .pdf">
+												<div class="form-group">
+													<input id="uploadButton" class="custom-upload-button upload-word" name="uploadButton" value="Tải lên" onclick="document.getElementById('file').click()">
 												</div>
+												<span style="color: red;" id="errorMessage"></span>
 											</div>
 										</div>
 										<div class="col-12">
@@ -81,7 +95,7 @@
 			</div>
 		</div>
 	</div>
-</div>        
+</div>
 <script>
 	// Example starter JavaScript for disabling form submissions if there are invalid fields
 	(() => {
@@ -103,24 +117,39 @@
 	})()
 
 	function validateForm() {
-		var file = document.getElementById("file-input").files[0];
-		if (!file) {
-			alert("Vui lòng chọn ảnh");
+
+		var fileInput = document.getElementById('file');
+		var errorMessage = document.getElementById('errorMessage');
+
+		if (fileInput.files.length === 0) {
+			errorMessage.textContent = 'Vui lòng chọn một file.';
+			console.log(errorMessage.textContent);
 			return false;
 		}
 
-		var img = new Image();
-		img.src = window.URL.createObjectURL(file);
-		img.onload = function() {
-			if (this.width === 0 || this.height === 0) {
-				alert("Ảnh không hợp lệ");
-				return false;
-			}
-			// Ảnh hợp lệ, submit form
-			return true;
-		};
+		var allowedExtensions = ['.doc', '.docx', '.pdf'];
+		var fileExtension = fileInput.files[0].name.split('.').pop().toLowerCase();
+
+		if (allowedExtensions.indexOf('.' + fileExtension) === -1) {
+			errorMessage.textContent = 'Chỉ được tải lên các file Word (.doc, .docx) hoặc PDF (.pdf).';
+			console.log(errorMessage.textContent);
+			return false;
+		}
+
+		// Nếu các điều kiện đều đúng, cho phép form submit
+		errorMessage.textContent = ''; // Xóa thông báo lỗi nếu có
+		return true;
 	}
 
-	// ẩn thẻ <img> khi không có ảnh được chọn
-	document.getElementById('preview').style.display = 'none';
+
+	function updateFileName() {
+		var fileInput = document.getElementById('file');
+		var buttonUpload = document.getElementById('uploadButton');
+
+		if (fileInput.files.length > 0) {
+			buttonUpload.value = fileInput.files[0].name;
+		} else {
+			buttonUpload.value = 'Tải lên';
+		}
+	}
 </script>

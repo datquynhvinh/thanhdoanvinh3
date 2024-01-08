@@ -39,6 +39,21 @@
     limit 4';
     $vanBanCoSoResult = mysqli_query($con, $vanBanCoSoSQL);
 
+    if (isset($_GET['fileupload'])) {
+        $fileUpload = $_GET['fileupload'];
+        $filePath = __DIR__ . '/assets/vanban/' . $fileUpload;
+
+        // Kiểm tra xem tệp tin tồn tại hay không
+        if (file_exists($filePath)) {
+            // Thiết lập các tiêu đề để báo cho trình duyệt biết đây là tệp tin để tải xuống
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . $_GET['filename'] . '"');
+            
+            // Xuất nội dung của tệp tin
+            readfile($filePath);
+            exit;
+        }
+    }
 
     include('include/menu.php');
 ?>
@@ -419,7 +434,7 @@
                                             <td><?php echo $row['ngaycapnhat']; ?></td>
                                             <td>
                                                 <p><?php echo $row['trichyeu']; ?></p>
-                                                <a href="<?php echo $row['taixuong']; ?>" class="btn btn_download"></a>
+                                                <a onclick="downloadFile('<?php echo $row['taixuong'];  ?>', '<?php echo $row['tenfile'];  ?>')" class="btn btn_download"></a>
                                             </td>
                                         </tr>
                                         <?php
@@ -467,6 +482,35 @@
 </body>
 <?php include('include/footer.php') ?>
 </html>
+<script>
+    function downloadFile(fileUpload, fileName) {
+        console.log(fileName);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'index.php?fileupload=' + fileUpload + '&filename=' + fileName, true);
+        xhr.responseType = 'blob';
 
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Tạo một đối tượng Blob từ dữ liệu nhận được
+                var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+
+                // Tạo một URL từ Blob và tạo một a element để tải xuống
+                var downloadURL = window.URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.href = downloadURL;
+                link.download = 'tenfile.doc';
+
+                // Thêm link vào trang và kích hoạt click để tải xuống
+                document.body.appendChild(link);
+                link.click();
+
+                // Xóa link sau khi đã sử dụng
+                document.body.removeChild(link);
+            }
+        };
+
+        xhr.send();
+    }
+</script>
 
                         
