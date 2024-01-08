@@ -25,7 +25,7 @@
 		$content = $_POST['content'];
 		$fileName = '';
 
-		$targetDir = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/upload/';
+		$targetDir = '../../assets/img/upload/';
 		if (!is_dir($targetDir)) {
 			mkdir($targetDir, 0777, true);
 		}
