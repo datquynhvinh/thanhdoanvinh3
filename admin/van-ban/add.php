@@ -10,7 +10,7 @@
 		$fileName = null;
 		$fileUpload = null;
 		if (isset($_FILES["vanban"])) {
-			$targetDir = '../../assets/vanban/upload/';
+			$targetDir = '../../assets/vanban/';
 			if (!is_dir($targetDir)) {
 				mkdir($targetDir, 0777, true);
 			}

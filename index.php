@@ -39,22 +39,6 @@
     limit 4';
     $vanBanCoSoResult = mysqli_query($con, $vanBanCoSoSQL);
 
-    if (isset($_GET['fileupload'])) {
-        $fileUpload = $_GET['fileupload'];
-        $filePath = __DIR__ . '/assets/vanban/' . $fileUpload;
-
-        // Kiểm tra xem tệp tin tồn tại hay không
-        if (file_exists($filePath)) {
-            // Thiết lập các tiêu đề để báo cho trình duyệt biết đây là tệp tin để tải xuống
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="' . $_GET['filename'] . '"');
-            
-            // Xuất nội dung của tệp tin
-            readfile($filePath);
-            exit;
-        }
-    }
-
     include('include/menu.php');
 ?>
 <div class="section_hot_news wow fadeInUp" data-wow-delay="200ms">
@@ -483,29 +467,31 @@
 <?php include('include/footer.php') ?>
 </html>
 <script>
-    function downloadFile(fileUpload, fileName) {
-        console.log(fileName);
+    function downloadFile(file_path, file_name) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'index.php?fileupload=' + fileUpload + '&filename=' + fileName, true);
-        xhr.responseType = 'blob';
+        var downloadUrl = 'download.php';
 
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Tạo một đối tượng Blob từ dữ liệu nhận được
-                var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+        xhr.open('GET', downloadUrl + '?file_path=assets/vanban/' + file_path + '&file_name=' + file_name, true);
 
-                // Tạo một URL từ Blob và tạo một a element để tải xuống
-                var downloadURL = window.URL.createObjectURL(blob);
-                var link = document.createElement('a');
-                link.href = downloadURL;
-                link.download = 'tenfile.doc';
+        xhr.onreadystatechange = function () {
+            if (file_path !== '' && xhr.readyState == 4 && xhr.status == 200) {
+                var downloadLink = document.createElement('a');
+                downloadLink.href = downloadUrl + '?file_path=' + file_path + '&file_name=' + file_name;
 
-                // Thêm link vào trang và kích hoạt click để tải xuống
-                document.body.appendChild(link);
-                link.click();
+                // Thêm thuộc tính "download" để tải xuống thay vì mở trong tab mới
+                downloadLink.setAttribute('download', file_name);
 
-                // Xóa link sau khi đã sử dụng
-                document.body.removeChild(link);
+                // Ẩn link
+                downloadLink.style.display = 'none';
+
+                // Thêm link vào body
+                document.body.appendChild(downloadLink);
+
+                // Kích hoạt sự kiện click trên link
+                downloadLink.click();
+
+                // Loại bỏ link sau khi đã click
+                document.body.removeChild(downloadLink);
             }
         };
 

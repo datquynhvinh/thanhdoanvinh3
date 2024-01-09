@@ -15,7 +15,7 @@
 		$value = "kyhieu ='$kyhieu', ngaycapnhat = '$ngaycapnhat', trichyeu = '$trichyeu'";
 
 		if (isset($_FILES['vanban']['size']) && $_FILES['vanban']['size'] > 0) {
-			$targetDir = '../../assets/vanban/upload/';
+			$targetDir = '../../assets/vanban/';
 			if (!is_dir($targetDir)) {
 				mkdir($targetDir, 0777, true);
 			}
