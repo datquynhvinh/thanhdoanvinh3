@@ -65,7 +65,7 @@
                                                     <td>
                                                         <a class="admin_icon_edit" href="edit.php?id=<?php echo $row['id'] ?>"><i class="fas fa-pen"></i></a>
                                                         <?php if ($_SESSION['user_id'] != $row['id']) { ?>
-                                                            <button type="button" class="admin_icon_delete" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="delete_id = <?php echo $row['id'] ?>"><i class="fas fa-trash"></i></button>
+                                                            <button type="button" class="admin_icon_delete" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="setDeleteId(<?php echo $row['id'] ?>)"><i class="fas fa-trash"></i></button>
                                                         <?php } ?>
                                                         </td>
                                                 </tr>
@@ -87,11 +87,37 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa người dùng</h1>
+                <div>
+                    <b><h1 class="modal-title fs-5" id="exampleModalLabel">Xóa người dùng</h1></b>
+                    <h5>Bạn chắc chắn muốn xóa người dùng này!</h5>
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                Bạn chắc chắn muốn xóa người dùng này!
+                <input type="hidden" id="delete_id_input" name="delete_id_input">
+                <label for="type_delete">Bạn có muốn chuyển sở hữu nội dung cho người khác không?</label>
+                <div>
+                    <input type="radio" name="type_delete" value="delete_all" checked> <span class="small">Xóa tất cả nội dung</span><br>
+                    <div>
+                        <input type="radio" name="type_delete" value="give_content" >
+                        <span class="small">Chuyển quyền sở hữu cho</span>
+                        <?php 
+                            $targetUser = '1';
+                            $otherUserResult = mysqli_query($con, "SELECT * FROM users WHERE id != $targetUser ORDER BY id ASC");
+                            $otherUsers = mysqli_fetch_all($otherUserResult, MYSQLI_ASSOC);
+                        ?>
+                        <select class="" name="role">
+                            <?php
+                                foreach ($otherUsers as $ortherUser) {
+                            ?>
+                                <option value="<?php echo $ortherUser['id'] ?>"><?php echo $ortherUser['firstname'] . ' ' . $ortherUser['lastname'] ?>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                    </div>
+
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -108,6 +134,11 @@
     <script>
         var deleteForm = document.forms['delete-form']
         
+        function setDeleteId(id) {
+            delete_id = id;
+            document.getElementById('delete_id_input').value = id;
+        }
+
         function handleDelete () {
             deleteForm.action = `index.php?id=${delete_id}`
             document.querySelector('#delete-submit-form').click()
