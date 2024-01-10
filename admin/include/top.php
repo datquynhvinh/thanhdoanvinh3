@@ -14,7 +14,6 @@
     $sql_category = mysqli_query($con,'SELECT * FROM menu ORDER BY idMenu DESC');
     $sql_category_top = mysqli_query($con,'SELECT * FROM `menu-top` ORDER BY idMenuTop ASC');
  ?>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>

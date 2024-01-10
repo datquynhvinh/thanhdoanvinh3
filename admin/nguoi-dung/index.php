@@ -64,8 +64,10 @@
                                                     <td class="admin_new_content"><?php echo $row['role'] == 'admin' ? 'Quản trị viên' : 'Thành viên' ?></td>
                                                     <td>
                                                         <a class="admin_icon_edit" href="edit.php?id=<?php echo $row['id'] ?>"><i class="fas fa-pen"></i></a>
-                                                        <button type="button" class="admin_icon_delete" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="delete_id = <?php echo $row['id'] ?>"><i class="fas fa-trash"></i></button>
-                                                    </td>
+                                                        <?php if ($_SESSION['user_id'] != $row['id']) { ?>
+                                                            <button type="button" class="admin_icon_delete" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="delete_id = <?php echo $row['id'] ?>"><i class="fas fa-trash"></i></button>
+                                                        <?php } ?>
+                                                        </td>
                                                 </tr>
                                             <?php
                                                 $i++; }
