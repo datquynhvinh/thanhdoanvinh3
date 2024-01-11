@@ -65,7 +65,7 @@
                         $_SESSION["user_role"] = $row['role'];
                         $_SESSION["user_active"] = $row['is_active'];
 
-                        redirect("admin/dashboard");
+                        redirect("admin/menu");
                     } else {
                         $data["password_err"] = "Mật khẩu không chính xác!";
                     }

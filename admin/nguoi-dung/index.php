@@ -8,14 +8,22 @@
 ?>
 <?php
     if(isset($_POST['delete'])) {
-        $id = $_GET['id'];
-        if($id != null) {
-            $sql = "delete from users where id=$id";
-            $qr = mysqli_query($con, $sql);
-        } 
+        $userId = $_POST['user_id'];
+
+        if ($_POST['type_delete'] == 'delete_all') {
+            $deleteNewSql = "DELETE FROM news WHERE author_id=$userId";
+            $qr = mysqli_query($con, $deleteNewSql);
+        } else if ($_POST['type_delete'] == 'give_content') {
+            $giveId = $_POST['give_id'];
+            $updateNewSql = "UPDATE news SET author_id=$giveId WHERE author_id=$userId";
+            $qr = mysqli_query($con, $updateNewSql);
+        }
+
+        $deleteUserSql = "DELETE FROM users WHERE id=$userId";
+        $qr = mysqli_query($con, $deleteUserSql);
     }
 
-    $userResult = mysqli_query($con,'SELECT * FROM users ORDER BY id ASC');
+    $userResult = mysqli_query($con,'SELECT * FROM users ORDER BY id ASC');    
  ?>
     <div class="app-container">
         <div class="search">
@@ -86,63 +94,76 @@
         <div class="modal fade" id="exampleModal" tabindex="5" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <div>
-                    <b><h1 class="modal-title fs-5" id="exampleModalLabel">Xóa người dùng</h1></b>
-                    <h5>Bạn chắc chắn muốn xóa người dùng này!</h5>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" id="delete_id_input" name="delete_id_input">
-                <label for="type_delete">Bạn có muốn chuyển sở hữu nội dung cho người khác không?</label>
-                <div>
-                    <input type="radio" name="type_delete" value="delete_all" checked> <span class="small">Xóa tất cả nội dung</span><br>
-                    <div>
-                        <input type="radio" name="type_delete" value="give_content" >
-                        <span class="small">Chuyển quyền sở hữu cho</span>
-                        <?php 
-                            $targetUser = '1';
-                            $otherUserResult = mysqli_query($con, "SELECT * FROM users WHERE id != $targetUser ORDER BY id ASC");
-                            $otherUsers = mysqli_fetch_all($otherUserResult, MYSQLI_ASSOC);
-                        ?>
-                        <select class="" name="role">
-                            <?php
-                                foreach ($otherUsers as $ortherUser) {
-                            ?>
-                                <option value="<?php echo $ortherUser['id'] ?>"><?php echo $ortherUser['firstname'] . ' ' . $ortherUser['lastname'] ?>
-                            <?php
-                                }
-                            ?>
-                        </select>
+                <form action="" method="POST" id="delete-form">
+                    <div class="modal-header">
+                        <div>
+                            <b><h1 class="modal-title fs-5" id="exampleModalLabel">Xóa người dùng</h1></b>
+                            <h5>Bạn chắc chắn muốn xóa người dùng này!</h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="user_id" id="user_id">
+                        <label for="type_delete">Bạn có muốn chuyển sở hữu nội dung cho người khác không?</label>
+                        <div>
+                            <input type="radio" name="type_delete" value="delete_all" checked> <span class="small">Xóa tất cả nội dung</span><br>
+                            <div>
+                                <input type="radio" name="type_delete" value="give_content" >
+                                <span class="small">Chuyển quyền sở hữu cho</span>
+                                <select class="" name="give_id"></select>
+                            </div>
 
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-danger" onclick="handleDelete()">Xóa</button>
-              </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-danger" name="delete">Xóa</button>
+                    </div>
+                </form>
             </div>
           </div>
         </div>
     </div>
 
-    <form action="" method="POST" id="delete-form">
-        <button type="submit" name='delete' id="delete-submit-form"></button>
-    </form>
     <script>
         var deleteForm = document.forms['delete-form']
-        
-        function setDeleteId(id) {
-            delete_id = id;
-            document.getElementById('delete_id_input').value = id;
+        var deleteUserId;
+
+        function setDeleteId(userId) {
+            userElement = document.getElementById('user_id');
+            userElement.value = userId;
+            console.log(userElement.value);
+            deleteUserId = userId;
+            fetchOtherUsers();
+        }
+
+        function fetchOtherUsers() {
+        // Fetch other users excluding the one to be deleted
+            fetch('other_user.php?targetUser=' + deleteUserId)
+                .then(response => response.json())
+                .then(data => {
+                    updateSelectDropdown(data.otherUsers);
+                })
+                .catch((error) => {
+                    console.error('Error fetching other users:', error);
+                });
+        }
+
+        function updateSelectDropdown(otherUsers) {
+            var selectDropdown = document.querySelector('select[name="give_id"]');
+            selectDropdown.innerHTML = '';
+
+            otherUsers.forEach(function (user) {
+                var option = document.createElement('option');
+                option.value = user.id;
+                option.text = user.firstname + ' ' + user.lastname;
+                selectDropdown.appendChild(option);
+            });
         }
 
         function handleDelete () {
-            deleteForm.action = `index.php?id=${delete_id}`
+            deleteForm.action = `index.php?id=${deleteUserId}`
             document.querySelector('#delete-submit-form').click()
-           
         }
 
         $(document).ready(function() {
