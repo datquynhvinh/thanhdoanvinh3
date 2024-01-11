@@ -5,6 +5,13 @@
 
     if (!isLoggedIn()) {
         redirect('admin/auth/login.php');
+    } else {
+        $result = mysqli_query($con,'SELECT * FROM users WHERE id = ' . $_SESSION['user_id']);
+        $user = mysqli_fetch_assoc($result);
+
+        if (!$user) {
+            redirect('admin/auth/login.php');
+        }
     }
 
     if (!isActive()) {
